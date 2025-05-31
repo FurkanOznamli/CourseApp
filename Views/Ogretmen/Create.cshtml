@@ -1,0 +1,57 @@
+﻿@model Ogretmen
+@{
+    ViewData["Title"] = "Öğretmen Ekle";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4 text-center">👨‍🏫 Yeni Öğretmen Ekle</h3>
+
+                    <form asp-controller="Ogretmen" asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Ad" class="form-label">Ad</label>
+                            <input asp-for="Ad" class="form-control" placeholder="Örn: Elif" />
+                            <span asp-validation-for="Ad" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Soyad" class="form-label">Soyad</label>
+                            <input asp-for="Soyad" class="form-control" placeholder="Örn: Kaya" />
+                            <span asp-validation-for="Soyad" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Eposta" class="form-label">E-Posta</label>
+                            <input asp-for="Eposta" class="form-control" placeholder="Örn: elif.kaya@example.com" />
+                            <span asp-validation-for="Eposta" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Telefon" class="form-label">Telefon</label>
+                            <input asp-for="Telefon" class="form-control" placeholder="Örn: 0555 123 45 67" />
+                            <span asp-validation-for="Telefon" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BaslamaTarihi" class="form-label">Başlama Tarihi</label>
+                            <input asp-for="BaslamaTarihi" class="form-control" type="date" />
+                            <span asp-validation-for="BaslamaTarihi" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="/Ogretmen" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left-circle me-1"></i> Geri Dön
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle me-1"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

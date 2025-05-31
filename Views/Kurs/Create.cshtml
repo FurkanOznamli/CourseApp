@@ -1,0 +1,41 @@
+﻿@model Kurs
+@{
+    ViewData["Title"] = "Yeni Kurs Ekle";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4 text-center">📘 Yeni Kurs Ekle</h3>
+
+                    <form asp-controller="Kurs" asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Baslik" class="form-label">Kurs Başlığı</label>
+                            <input asp-for="Baslik" class="form-control" placeholder="Örn: C# Programlama" />
+                            <span asp-validation-for="Baslik" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="OgretmenId" class="form-label">Öğretmen</label>
+                            <select asp-for="OgretmenId" asp-items="ViewBag.Ogretmenler" class="form-select">
+                                <option value="">Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="OgretmenId" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="/Kurs" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left-circle me-1"></i> Geri Dön
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle me-1"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

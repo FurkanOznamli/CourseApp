@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Ogretmen>
+@{
+    ViewData["Title"] = "Öğretmenler";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">👨‍🏫 Öğretmen Listesi</h2>
+        <a href="/Ogretmen/Create" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i> Öğretmen Ekle
+        </a>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover table-bordered align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th style="width:120px;">@Html.DisplayNameFor(m => m.OgretmenId)</th>
+                    <th>@Html.DisplayNameFor(m => m.Ad)</th>
+                    <th>@Html.DisplayNameFor(m => m.Soyad)</th>
+                    <th>@Html.DisplayNameFor(m => m.BaslamaTarihi)</th>
+                    <th style="width:160px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OgretmenId</td>
+                        <td>@item.Ad</td>
+                        <td>@item.Soyad</td>
+                        <td>@item.BaslamaTarihi.ToShortDateString()</td>
+                        <td>
+                            <a asp-controller="Ogretmen" asp-action="Edit" asp-route-id="@item.OgretmenId" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="bi bi-pencil-square"></i> Düzenle
+                            </a>
+                            <a asp-controller="Ogretmen" asp-action="Delete" asp-route-id="@item.OgretmenId" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash3"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

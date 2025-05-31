@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Kurs>
+@{
+    ViewData["Title"] = "Kurslar";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">📘 Kurs Listesi</h2>
+        <a href="/Kurs/Create" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i> Kurs Ekle
+        </a>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover table-bordered align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th style="width:120px;">@Html.DisplayNameFor(m => m.KursId)</th>
+                    <th>@Html.DisplayNameFor(m => m.Baslik)</th>
+                    <th>@Html.DisplayNameFor(m => m.Ogretmen.AdSoyad)</th>
+                    <th style="width:160px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.KursId</td>
+                        <td>@item.Baslik</td>
+                        <td>@item.Ogretmen?.AdSoyad</td>
+                        <td>
+                            <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@item.KursId" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="bi bi-pencil-square"></i> Düzenle
+                            </a>
+                            <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@item.KursId" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash3"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

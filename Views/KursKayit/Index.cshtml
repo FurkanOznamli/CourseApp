@@ -1,0 +1,41 @@
+﻿@model IEnumerable<KursKayit>
+@{
+    ViewData["Title"] = "Kurs Kayıtları";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">📝 Kayıt Listesi</h2>
+        <a asp-controller="KursKayit" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i> Kayıt Ekle
+        </a>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover table-bordered align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th style="width:120px;">@Html.DisplayNameFor(m => m.First().KayitId)</th>
+                    <th>Öğrenci</th>
+                    <th>Kurs</th>
+                    <th style="width:160px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.KayitId</td>
+                        <td>@item.Ogrenci.AdSoyad</td>
+                        <td>@item.Kurs.Baslik</td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.KayitId" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash3"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
